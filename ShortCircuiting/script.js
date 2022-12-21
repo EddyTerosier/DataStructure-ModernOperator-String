@@ -54,38 +54,43 @@ const restaurant = {
     },
 };
 
-// OR Operator
-console.log("-----OR-----");
-// Use any data type, return any data type, short-circuiting
-// Si la premiere valeur est vraie il affichera forcement cette valeur
-console.log(3 || "Jonas");
-console.log("" || "Jonas");
-console.log(true || 0);
-console.log(undefined || null);
+// Nullish: null or undefined ( NOT 0 or "")
 
-console.log(undefined || 0 || "" || "Hello" || 23 || null);
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
 
-restaurant.numGuests = 42;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
+// // OR Operator
+// console.log("-----OR-----");
+// // Use any data type, return any data type, short-circuiting
+// // Si la premiere valeur est vraie il affichera forcement cette valeur
+// console.log(3 || "Jonas");
+// console.log("" || "Jonas");
+// console.log(true || 0);
+// console.log(undefined || null);
 
-console.log(restaurant.numGuests || 10);
+// console.log(undefined || 0 || "" || "Hello" || 23 || null);
 
-// AND Operator
-// C'est l'inverse de OR
+// restaurant.numGuests = 42;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
 
-console.log("-----AND-----");
+// console.log(restaurant.numGuests || 10);
 
-console.log(0 && "Jonas");
-console.log(7 && "Jonas");
+// // AND Operator
+// // C'est l'inverse de OR
 
-console.log("Hello" && 23 && null && "Jonas");
+// console.log("-----AND-----");
 
-// Practical Example
-if (restaurant.orderPizza) {
-    restaurant.orderPizza("shroom", "spinach");
-}
-restaurant.orderPizza && restaurant.orderPizza("shroom", "spinach");
+// console.log(0 && "Jonas");
+// console.log(7 && "Jonas");
+
+// console.log("Hello" && 23 && null && "Jonas");
+
+// // Practical Example
+// if (restaurant.orderPizza) {
+//     restaurant.orderPizza("shroom", "spinach");
+// }
+// restaurant.orderPizza && restaurant.orderPizza("shroom", "spinach");
 
 
 
