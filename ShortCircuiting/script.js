@@ -54,14 +54,22 @@ const restaurant = {
     },
 };
 
-const rest1 = {
-    name: "Capri",
-    numGuests: 0,
-};
-const rest2 = {
-    name: "La Piazza",
-    owner: "Giovanni Rossi",
-};
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu ) console.log(item);
+
+for (const [i,el] of menu.entries()){
+    console.log(`${i+1}:${el}`);
+}
+
+// const rest1 = {
+//     name: "Capri",
+//     numGuests: 0,
+// };
+// const rest2 = {
+//     name: "La Piazza",
+//     owner: "Giovanni Rossi",
+// };
 
 // OR assignment operator
 // rest1.numGuests = rest1.numGuests || 10;
