@@ -73,6 +73,31 @@ for (const [i, el] of menu.entries()) {
     console.log(`${i + 1}:${el}`);
 }
 
+if (restaurant.openingHour && restaurant.openingHour.lundi)
+    console.log(restaurant.openingHour.lundi.open);
+
+// WITH OPTIONAL CHAIN
+// "?" Vérifie si la propriété existe ( NOT NULL or UNDEFINED) Et donc si ca existe ca affiche le ".open"
+console.log(restaurant.openingHour.lundi?.open);
+console.log(restaurant?.openingHour?.vendredi?.open);
+
+// EXAMPLE
+
+const days = [
+    "lundi",
+    "mardi",
+    "mercredi",
+    "jeudi",
+    "vendredi",
+    "samedi",
+    "dimanche",
+];
+
+for (const day of days) {
+    const open = restaurant.openingHour[day]?.open || "closed"
+    console.log(`On ${day}, we open at ${open}`);
+}
+
 // const rest1 = {
 //     name: "Capri",
 //     numGuests: 0,
