@@ -48,12 +48,44 @@ const restaurant = {
         );
     },
 
-    orderPizza: function (mainIng,...otherIng){
+    orderPizza: function (mainIng, ...otherIng) {
         console.log(mainIng);
         console.log(...otherIng);
-    }
+    },
 };
 
+// OR Operator
+console.log("-----OR-----");
+// Use any data type, return any data type, short-circuiting
+// Si la premiere valeur est vraie il affichera forcement cette valeur
+console.log(3 || "Jonas");
+console.log("" || "Jonas");
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+restaurant.numGuests = 42;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+console.log(restaurant.numGuests || 10);
+
+// AND Operator
+// C'est l'inverse de OR
+
+console.log("-----AND-----");
+
+console.log(0 && "Jonas");
+console.log(7 && "Jonas");
+
+console.log("Hello" && 23 && null && "Jonas");
+
+// Practical Example
+if (restaurant.orderPizza) {
+    restaurant.orderPizza("shroom", "spinach");
+}
+restaurant.orderPizza && restaurant.orderPizza("shroom", "spinach");
 
 
 
