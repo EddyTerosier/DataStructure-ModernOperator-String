@@ -54,10 +54,37 @@ const restaurant = {
     },
 };
 
+const rest1 = {
+    name: "Capri",
+    numGuests: 0,
+};
+const rest2 = {
+    name: "La Piazza",
+    owner: "Giovanni Rossi",
+};
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// rest1.numGuests ||= 10; // égale a "rest1.numGuests = rest1.numGuests || 10;"
+// rest2.numGuests ||= 10;
+
+// Nullish assignment operator
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+
+// AND assignment operator
+// rest1.owner &&= "<ANONYMOUS>"
+// rest2.owner &&= "<ANONYMOUS>"
+
+// console.log(rest1);
+// console.log(rest2);
+
 // Nullish: null or undefined ( NOT 0 or "")
 
-const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect);
+// const guestCorrect = restaurant.numGuests ?? 10;
+// console.log(guestCorrect);
 
 // // OR Operator
 // console.log("-----OR-----");
@@ -91,8 +118,6 @@ console.log(guestCorrect);
 //     restaurant.orderPizza("shroom", "spinach");
 // }
 // restaurant.orderPizza && restaurant.orderPizza("shroom", "spinach");
-
-
 
 // // 1. DESTRUCTURING
 
