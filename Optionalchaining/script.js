@@ -77,7 +77,7 @@ if (restaurant.openingHour && restaurant.openingHour.lundi)
     console.log(restaurant.openingHour.lundi.open);
 
 // WITH OPTIONAL CHAIN
-// "?" Vérifie si la propriété existe ( NOT NULL or UNDEFINED) Et donc si ca existe ca affiche le ".open"
+// "?." Vérifie si la propriété existe ( NOT NULL or UNDEFINED) Et donc si ca existe ca affiche le "open"
 console.log(restaurant.openingHour.lundi?.open);
 console.log(restaurant?.openingHour?.vendredi?.open);
 
@@ -94,9 +94,16 @@ const days = [
 ];
 
 for (const day of days) {
-    const open = restaurant.openingHour[day]?.open || "closed"
+    const open = restaurant.openingHour[day]?.open ?? "closed";
     console.log(`On ${day}, we open at ${open}`);
 }
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
+
+// Arrays
+const users = [{ name: "Jonas", email: "ergrrth" }];
+console.log(users[0]?.name ?? "User array empty");
 
 // const rest1 = {
 //     name: "Capri",
