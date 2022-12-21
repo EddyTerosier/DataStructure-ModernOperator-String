@@ -105,6 +105,7 @@ console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
 const users = [{ name: "Jonas", email: "ergrrth" }];
 console.log(users[0]?.name ?? "User array empty");
 
+
 // const rest1 = {
 //     name: "Capri",
 //     numGuests: 0,
