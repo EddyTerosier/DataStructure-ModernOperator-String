@@ -55,7 +55,12 @@ const oddsKeys = Object.keys(game.odds);
 const oddsValues = Object.values(game.odds);
 // console.log(oddsValues);
 const entriesOdds = Object.entries(game.odds);
-console.log(entriesOdds);
+// console.log(entriesOdds);
+
+const team1Name = game.team1;
+// console.log(team1Name);
+const team2Name = game.team2;
+// console.log(team2Name);
 
 // 1.
 
@@ -67,7 +72,14 @@ for (let [goal, player] of entriesPlayer) {
 
 // 2.
 
-for (let keys of oddsValues) {
-    keys+keys;
+for (let keys of entriesOdds) {
     console.log(keys);
+}
+
+// 3.
+
+let string = `Odd of Victory ${game.oddsKeys}`;
+console.log(string);
+for (let keys of oddsValues) {
+    console.log(`${oddsKeys[0]}: ${keys}`);
 }
