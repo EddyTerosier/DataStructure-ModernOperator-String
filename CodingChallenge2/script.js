@@ -48,7 +48,8 @@ const goals = Object.keys(game.scored);
 const players = Object.values(game.scored);
 // console.log(players);
 const entriesPlayer = Object.entries(game.scored);
-// console.log(entriesPlayer);
+console.log(entriesPlayer);
+console.log(game.scored.entries());
 
 const oddsKeys = Object.keys(game.odds);
 // console.log(oddsKeys);
@@ -65,21 +66,23 @@ const team2Name = game.team2;
 // 1.
 
 // Boucle
-for (let [goal, player] of entriesPlayer) {
-    goal++;
-    console.log(`Goal ${goal}: ${player}`);
+for (const [goal, player] of game.scored.entries()) {
+    // goal++;
+    console.log(`Goal ${goal+1}: ${player}`);
 }
 
 // 2.
 
-for (let keys of entriesOdds) {
-    console.log(keys);
-}
+let average = 0;
+for (const odd of oddsValues) {average += odd};
+    average /= oddsValues.length
+    console.log(average);
 
 // 3.
 
-let string = `Odd of Victory ${game.oddsKeys}`;
-console.log(string);
-for (let keys of oddsValues) {
-    console.log(`${oddsKeys[0]}: ${keys}`);
+for (let [team,odd] of entriesOdds) {
+    const teamStr = team === "x" ? "Draw" : `victory ${game[team]}`
+    console.log(`Odd of ${teamStr} ${odd}`);
 }
+
+// 4.
