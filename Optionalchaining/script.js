@@ -65,46 +65,69 @@ const restaurant = {
     },
 };
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// Property NAMES
+const properties = Object.keys(openingHour);
+console.log(properties);
+let openStr = `We are open on ${properties.length} days: `;
 
-for (const item of menu) console.log(item);
-
-for (const [i, el] of menu.entries()) {
-    console.log(`${i + 1}:${el}`);
+for (const day of properties) {
+    openStr += `${day}, `;
 }
 
-if (restaurant.openingHour && restaurant.openingHour.lundi)
-    console.log(restaurant.openingHour.lundi.open);
+console.log(openStr);
 
-// WITH OPTIONAL CHAIN
-// "?." Vérifie si la propriété existe ( NOT NULL or UNDEFINED) Et donc si ca existe ca affiche le "open"
-console.log(restaurant.openingHour.lundi?.open);
-console.log(restaurant?.openingHour?.vendredi?.open);
+// Property VALUES
+const values = Object.values(openingHour);
+console.log(values);
 
-// EXAMPLE
+// Entire object
+const entries = Object.entries(openingHour);
+console.log(entries);
 
-const days = [
-    "lundi",
-    "mardi",
-    "mercredi",
-    "jeudi",
-    "vendredi",
-    "samedi",
-    "dimanche",
-];
-
-for (const day of days) {
-    const open = restaurant.openingHour[day]?.open ?? "closed";
-    console.log(`On ${day}, we open at ${open}`);
+// [Key, value]
+for (const [key,{open,close}] of entries) {
+    console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
 
-// Methods
-console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-// Arrays
-const users = [{ name: "Jonas", email: "ergrrth" }];
-console.log(users[0]?.name ?? "User array empty");
+// for (const item of menu) console.log(item);
 
+// for (const [i, el] of menu.entries()) {
+//     console.log(`${i + 1}:${el}`);
+// }
+
+// if (restaurant.openingHour && restaurant.openingHour.lundi)
+//     console.log(restaurant.openingHour.lundi.open);
+
+// // WITH OPTIONAL CHAIN
+// // "?." Vérifie si la propriété existe ( NOT NULL or UNDEFINED) Et donc si ca existe ca affiche le "open"
+// console.log(restaurant.openingHour.lundi?.open);
+// console.log(restaurant?.openingHour?.vendredi?.open);
+
+// // EXAMPLE
+
+// const days = [
+//     "lundi",
+//     "mardi",
+//     "mercredi",
+//     "jeudi",
+//     "vendredi",
+//     "samedi",
+//     "dimanche",
+// ];
+
+// for (const day of days) {
+//     const open = restaurant.openingHour[day]?.open ?? "closed";
+//     console.log(`On ${day}, we open at ${open}`);
+// }
+
+// // Methods
+// console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
+
+// // Arrays
+// const users = [{ name: "Jonas", email: "ergrrth" }];
+// console.log(users[0]?.name ?? "User array empty");
 
 // const rest1 = {
 //     name: "Capri",
