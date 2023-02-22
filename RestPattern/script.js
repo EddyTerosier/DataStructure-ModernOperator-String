@@ -1,11 +1,19 @@
 "use strict";
 
-/* Le code montre comment utiliser l'opérateur spread (...) 
-pour copier des tableaux, lier des tableaux multiples et même passer 
-des variables comme arguments. Cela fonctionnera également sur des objets, 
-même s'ils ne sont pas itérables. Enfin, cela nous montre comment créer des 
-copies d'objets, attribuer de nouvelles valeurs et comparer les anciennes valeurs 
-aux nouvelles. */
+/* Le rest operator (...) dans JavaScript est un opérateur qui permet de récupérer les valeurs 
+restantes d'un objet iterable (comme un tableau), et de les stocker dans une nouvelle variable.
+Par exemple, const [a, b, ...elements] = [1, 2, 3, 4]; permettrait de stocker les éléments 
+restants du tableau (3 et 4) dans la nouvelle variable elements. */
+
+/* Lorsqu'il est utilisé avec des objets, 
+l'opérateur REST stocke les éléments non spécifiés dans un objet distinct.
+
+L'opérateur REST peut être utilisé pour définir 
+des paramètres variadiques vers des fonctions. 
+Lorsque cela se produit, tous les arguments qui 
+sont envoyés à une fonction seront regroupés au 
+sein d'un seul tableau natif, ce qui facilite 
+considérablement le traitement et la manipulation des données. */
 
 // Définition de la variable flights qui est utilisée dans un exercice ultérieur
 const flights =
@@ -56,51 +64,70 @@ const restaurant = {
             `Here is your delictious pasta with ${ing1}, ${ing2},${ing3}`
         );
     },
+
+    orderPizza: function (mainIng, ...otherIngredients){
+        console.log(mainIng);
+        console.log(otherIngredients);
+    }
 };
 
-// Appel de la fonction orderDelivery de l'objet restaurant avec un objet en argument
-restaurant.orderDelivery({
-    adress: "Via del Sol,21",
-});
+//---------------------  1. Destructuring
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// Le REST operator est l'opposé du SPREAD operator
 
-const goodArr = [1, 2, ...arr]; // Ca prend tout les éléments du tableau et les sort individuellement ici ca les place dans le tableau
-console.log(goodArr);
-console.log(...goodArr);
+// SPREAD est a droite du signe "="
 
-const newMenu = [...restaurant.mainMenu, "Gnocci"]; // On récupere les elements du tableau puis on ajoute 'gnocci'
-console.log(newMenu);
+const arr = [1, 2, ...[3, 4]];
 
-// Créer des copies de tableau
+// REST est a gauche du signe "="
 
-const mainMenuCopy = [...restaurant.mainMenu];
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
 
-// Lié deux tableaux ou plus
+// Le REST operator DOIT etre le dernier element
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu);
+const [pizza, , risotto, ...otherFood] = [
+    ...restaurant.mainMenu,
+    ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
 
-// Les itérables : tableaux, chaines, maps, sets mais pas des objets
+// Objects || Les éléments seront stockés dans un objete et pas dans un tableau
 
-const str = "Jonas";
-const letters = [...str, " ", "S."];
-console.log(letters);
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
 
-console.log(...str);
-// console.log(`${...str} Scmedtmann`); Ne marche pas ! impossible sur les objets
+//--------------------- 2. Functions
 
-// Depuis ES6 Ca marche sur les objets meme s'ils ne sont pas itérable
+// Voici un REST parameters
 
-const newRestaurant = { ...restaurant, founder: "Guiseppe", foundedIn: 1998 };
-console.log(newRestaurant);
+const add = function (...numbers) {
+    let sum =0;
+    for (let i = 0; i < numbers.length; i++) sum+= numbers[i];
+    console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
 
-// On fait une copie du tableau pour pouvoir modifié les propriétés du tableau sans toucher à l'original
+const x = [23,5,7];
+add(...x);
 
-const restaurantCopy = {...restaurant};
-restaurantCopy.name = 'Ristorante Roma';
+restaurant.orderPizza('Shrooms', 'Oignon', 'spinach', 'olive');
+restaurant.orderPizza('Shrooms')
 
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+/* Ce code montre comment utiliser l'operateur REST. 
+Dans le premier morceau de code, l'opérateur REST est 
+placé après [1,2] et contient des valeurs allant de 3 à 4. 
+Cela permet à toutes ces valeurs d'être regroupées sous la même variable.
+
+Le deuxième morceau de code utilise l'opérateur REST pour 
+assigner plusieurs éléments avec une seule instruction. 
+Cela empêche également des éléments spécifiques de passer 
+inaperçu (dans le cas présent, le deuxième élément de l'array).
+
+Le dernier exemple montre comment l'opérateur REST peut être 
+combiné avec un autre opérateur: le Spread Operator. 
+En l'utilisant, il est possible de passer des éléments d'un 
+array arr à une fonction sans avoir à créer un corps de code 
+supplémentaire pour le faire. */
