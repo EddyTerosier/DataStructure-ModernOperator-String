@@ -1,9 +1,5 @@
 "use strict";
 
-// Data needed for a later exercise
-const flights =
-    "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
-
 // Data needed for first part of the section
 const restaurant = {
     name: "Classico Italiano",
@@ -12,55 +8,46 @@ const restaurant = {
     starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
     mainMenu: ["Pizza", "Pasta", "Risotto"],
 
+    // Function to order food from the menu
     order: function (starterIndex, mainIndex) {
+        // Returns an array with the requested food items
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-    },
-
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, // Open 24 hours
-            close: 24,
-        },
     },
 };
 
-const arr = [2, 3, 4];
+// Array of numbers
+const arr = [1, 2, 3];
+
+// Old version to get info from an array
 const a = arr[0];
 const b = arr[1];
 const c = arr[2];
 
+// With array destructuring, we destructure the right array "arr" into three variables "x,y,z" that look like an array but are not 
 const [x, y, z] = arr;
 console.log(x, y, z);
+console.log(arr);
 
+// Destructuring two values from a function and storing them in two variables
 let [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
 
-// const temp = main;
-// main = secondary;
-// secondary = temp;
-// console.log(main, secondary);
-
+// Switching values with array destructuring is easier than the old way which took at least a third variable
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
 
-// Receive 2 return values from a function
-
-const [starter, mainCourse] = restaurant.order(2, 0);
-console.log(starter, mainCourse);
-
-// Nested destructuring
+// Destructuring an array into another array
 const nested = [2, 4, [5, 6]];
-const [step1, , [step2,step3]] = nested;
-console.log(step1, step2,step3);
+const [i, , [j, k]] = nested;
+console.log(i, j, k); 
 
-// Default Values
-const [p=1,q=1,r=1] = [8,9];
-console.log(p,q,r);
+// Assigning default values 
+const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r);
+
+
+/* Le code ci-dessus illustre plusieurs caractéristiques importantes du destructuring en JavaScript, notamment :
+
+Destruction d'un tableau pour créer de nouvelles variables à partir de ses éléments ;
+Permutation de valeurs entre deux variables sans avoir besoin d'une variable temporaire;
+Affectation des valeurs par défaut à des variables si elles ne peuvent pas être assignées à un élément dans le tableau. */
