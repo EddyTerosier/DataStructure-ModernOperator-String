@@ -71,5 +71,3 @@ for (const [i, el] of menu.entries()) {
     // On destructure directement le tableau en sachant que i sera l'index et el l'élément
     console.log(`${i + 1}: ${el}`); // new way
 }
-
-// AMELIORATION DES OBJETS LITERAUX
