@@ -1,4 +1,21 @@
-"use strict";
+/* Créez un tableau joueur pour chaque équipe (variables 'players1' et 'players2')
+
+Le premier joueur de chaque tableau est le gardien de but et les autres sont des joueurs de terrain. 
+Pour Bayern Munich (équipe 1), créez une variable ('gk') avec le nom du gardien de but, et un tableau ('fieldPlayers') contenant tous les 10 joueurs de terrain restants.
+
+Créez un tableau 'allPlayers' contenant tous les joueurs des deux équipes (22 joueurs).
+
+Pendant le jeu, Bayern Munich (équipe 1) a utilisé 3 joueurs de remplacement. Donc créez un nouveau tableau ('players1Final') contenant tous les joueurs d'origine de l'équipe 1 plus 'Thiago', 'Coutinho' et 'Perisic'.
+
+Basé sur l'objet game.odds, créez une variable pour chaque cote (appelée 'team1', 'draw' et 'team2').
+
+Écrivez une fonction ('printGoals') qui reçoit un nombre arbitraire de noms de joueurs (pas un tableau) et qui les affiche chacun dans la console, ainsi que le nombre total de buts marqués (nombre de noms de joueurs passés en paramètre).
+
+L'équipe ayant la cote la plus basse a plus de chance de gagner. Imprimez dans la console laquelle des deux équipes a plus de chance de gagner, sans utiliser d'instruction if/else ou l'opérateur ternaire.
+
+Test data pour 6.: D'abord, utilisez les joueurs 'Davies', 'Muller', 'Lewandowski' et 'Kimmich'.
+
+Ensuite, appelez à nouveau la fonction avec des joueurs provenant de game.scored. */
 
 const game = {
     team1: "Bayern Munich",
@@ -32,7 +49,7 @@ const game = {
         ],
     ],
     score: "4:0",
-    scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+    scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels", "Eddy"],
     date: "Nov 9th, 2037",
     odds: {
         team1: 1.33,
@@ -41,47 +58,33 @@ const game = {
     },
 };
 
-// 1.
 const players1 = game.players[0];
 const players2 = game.players[1];
-console.log(players1);
-console.log(players2);
+console.log(...players1);
+console.log(...players2);
 
-// 2.
-const [gk, ...fieldPlayers1] = players1;
+const [gk, ...fieldPlayers] = players1;
 console.log(gk);
-console.log(fieldPlayers1);
+console.log(...fieldPlayers);
 
-// 3.
 const allPlayers = [...players1, ...players2];
 console.log(allPlayers);
 
-// 4.
-const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+const players1Final = [...players1, "Thiago", "Counthino", "Perisic"];
 console.log(players1Final);
 
-// 5.
-// const team1 = game.odds.team1;
-// const {team1, ...teamRest1} = game.odds;
-// console.log(team1);
-// // const draw = game.odds.x;
-// const {draw, ...x} = game.odds;
-// console.log(draw);
-// // const team2 = game.odds.team2;
-// const {team2, ...teamRest2} = game.odds;
-// console.log(team2);
+const {
+    odds: { team1: team1 },
+    odds: { x: draw },
+    odds: { team2: team2 },
+} = game;
 
-const {odds:{team1,x:draw,team2}} = game;
-console.log(team1,draw,team2);
+console.log(team1);
+console.log(draw);
+console.log(team2);
 
-// 6.
-const printGoals = function (...playerName) {
-    console.log(...playerName, game.score);
-};
-printGoals("Davies", "Muller", "Lewandowski", "Kimmich");
+function printGoals(...names) {
+    console.log(...names, game.scored.length);
+}
+
 printGoals(...game.scored);
-
-// 7.
-
-team1 < team2 && console.log("Team 1 is more likely to win");
-team2 < team1 && console.log("Team 2 is more likely to win");
